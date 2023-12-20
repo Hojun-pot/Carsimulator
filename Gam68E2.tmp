@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct6nplxxttoge"]
+
+[ext_resource type="PackedScene" uid="uid://twatf041n6c7" path="res://world.tscn" id="1_8d4to"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="3_0esjl"]
+[ext_resource type="PackedScene" uid="uid://dd21yamuemdn4" path="res://Porsche 911 GT2.tscn" id="3_dhmip"]
+
+[sub_resource type="Environment" id="Environment_gaebr"]
+background_mode = 1
+background_color = Color(0.584314, 0.886275, 0.792157, 0.568627)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="Game" type="Node3D"]
+
+[node name="World" parent="." instance=ExtResource("1_8d4to")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, -3.55271e-15, 7.59382e-08, 0.868632, 0.495459, 4.33144e-08, 0.495459, -0.868632, 0, 3.79357, -4.82575)
+environment = SubResource("Environment_gaebr")
+script = ExtResource("3_0esjl")
+
+[node name="Node3D" parent="." instance=ExtResource("3_dhmip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04966, -5.12464)

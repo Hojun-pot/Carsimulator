@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://3nsovan0fp4"
+path="res://.godot/imported/Porsche_911_GT2.obj-c11919a1a5df652fae5455bfd6c5fc31.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Porsche_911_GT2.obj-c11919a1a5df652fae5455bfd6c5fc31.mesh"]
+
+source_file="res://assets/Models/55z27frcahz4-P911GT/Porsche_911_GT2.obj"
+dest_files=["res://.godot/imported/Porsche_911_GT2.obj-c11919a1a5df652fae5455bfd6c5fc31.mesh", "res://.godot/imported/Porsche_911_GT2.obj-c11919a1a5df652fae5455bfd6c5fc31.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

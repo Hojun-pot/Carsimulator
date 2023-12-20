@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://j48oee6chyic"]
+
+[ext_resource type="Script" path="res://assets/Scripts/SpeedMeterPanel.gd" id="1_ca1c6"]
+[ext_resource type="Texture2D" uid="uid://bv4i7o28lpl3v" path="res://assets/UI/Dial3.png" id="2_rg30g"]
+[ext_resource type="Texture2D" uid="uid://da5krewpy3s8d" path="res://assets/UI/Needle3.png" id="3_vsgki"]
+[ext_resource type="FontFile" uid="uid://skp8swh0smym" path="res://assets/Font/DigitalNormal-xO6j.otf" id="4_dvxy8"]
+[ext_resource type="Texture2D" uid="uid://ccu5nuoth3lag" path="res://assets/UI/SpeedEffect.png" id="5_hqik8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wuwkj"]
+blend_mode = 1
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_5fi6h"]
+offsets = PackedFloat32Array(0, 0.337607, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.271368, 0.271368, 0.271368, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ihfey"]
+gradient = SubResource("Gradient_5fi6h")
+
+[sub_resource type="Curve" id="Curve_goaqr"]
+_data = [Vector2(0.00403226, 0.425038), 0.0, 0.0, 0, 0, Vector2(1, 0.926912), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_m00eq"]
+curve = SubResource("Curve_goaqr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8upx8"]
+particle_flag_disable_z = true
+spread = 44.54
+angular_velocity_min = 1.0
+angular_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_m00eq")
+color_ramp = SubResource("GradientTexture1D_ihfey")
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ruv1"]
+font = ExtResource("4_dvxy8")
+font_size = 27
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_ca1c6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -624.0
+offset_right = 1152.0
+offset_bottom = 24.0
+grow_vertical = 0
+
+[node name="BoosterEffect" type="GPUParticles2D" parent="MarginContainer"]
+material = SubResource("CanvasItemMaterial_wuwkj")
+position = Vector2(560, 304)
+scale = Vector2(5.80601, 5.80601)
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_8upx8")
+texture = ExtResource("5_hqik8")
+fixed_fps = 60
+
+[node name="Dial" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(128.32, 535.13)
+scale = Vector2(0.129658, 0.129658)
+texture = ExtResource("2_rg30g")
+
+[node name="Needle" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(128, 528)
+scale = Vector2(0.13652, 0.13652)
+texture = ExtResource("3_vsgki")
+centered = false
+offset = Vector2(-292.998, 0)
+flip_h = true
+flip_v = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_direction = 1
+offset_left = 112.0
+offset_top = 576.0
+offset_right = 136.0
+offset_bottom = 608.0
+color = Color(0.0745098, 0.0784314, 0.0862745, 0.835294)
+
+[node name="Label" type="Label" parent="."]
+top_level = true
+layout_direction = 1
+offset_left = 120.0
+offset_top = 576.0
+offset_right = 168.0
+offset_bottom = 608.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("4_dvxy8")
+label_settings = SubResource("LabelSettings_8ruv1")
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true

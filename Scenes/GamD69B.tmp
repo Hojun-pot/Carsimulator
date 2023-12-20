@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0dk6b3tjjbdp"]
+
+[ext_resource type="PackedScene" uid="uid://c7ybiv8wiotbs" path="res://Scenes/world.tscn" id="1_kuv70"]
+[ext_resource type="Script" path="res://Scenes/Game.gd" id="1_mnivy"]
+[ext_resource type="PackedScene" uid="uid://cshq4rm8sleoe" path="res://Scenes/Porsche 911 GT2.tscn" id="2_gwvqc"]
+[ext_resource type="PackedScene" uid="uid://cln1y7siiv56g" path="res://Scenes/Player.tscn" id="3_fnjgd"]
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_mnivy")
+
+[node name="World" parent="." instance=ExtResource("1_kuv70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428192, 0)
+
+[node name="Player" parent="." instance=ExtResource("3_fnjgd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.27281, 0, 0)
+
+[node name="Porsche911Gt2" parent="." instance=ExtResource("2_gwvqc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97223, 0, 0)
