@@ -64,7 +64,8 @@ func avoid_player():
 	look_at(my_pos + escape_velocity, Vector3.UP)
 	
 	# Action
-	head_light.rotation_degrees.x += 82.5
+	if head_light.rotation_degrees.x < 1 :
+		head_light.rotation_degrees.x += 82.5
 	head_light_left.visible = true
 	head_light_right.visible = true
 	tail_light_left.visible = true
