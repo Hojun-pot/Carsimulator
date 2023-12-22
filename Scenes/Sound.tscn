@@ -13,7 +13,6 @@
 
 [node name="RPM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_cwci2")
-volume_db = 0.6
 
 [node name="StartSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_hougd")
@@ -33,15 +32,16 @@ volume_db = 1.0
 
 [node name="Song" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_1orue")
-volume_db = 1.0
-unit_size = 2.0
-max_distance = 100.0
+volume_db = 5.0
+unit_size = 4.0
+max_db = 6.0
+max_distance = 10.0
+panning_strength = 5.0
 
 [node name="Horn" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("1_dabwd")
 
 [node name="DriftSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("1_tabxn")
-volume_db = 1.0
+volume_db = 2.0
 unit_size = 2.0
-max_distance = 100.0
