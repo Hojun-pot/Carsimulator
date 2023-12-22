@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c7ybiv8wiotbs" path="res://Scenes/world.tscn" id="1_kuv70"]
 [ext_resource type="PackedScene" uid="uid://dsnusnyamqnve" path="res://Scenes/porshe_911_gt_2.tscn" id="4_k4auy"]
-[ext_resource type="PackedScene" uid="uid://c747eapabhv31" path="res://Toyota model.tscn" id="4_mm6hp"]
+[ext_resource type="PackedScene" uid="uid://c747eapabhv31" path="res://assets/Models/Toyota model.tscn" id="4_mm6hp"]
 
 [node name="Game" type="Node3D"]
 
