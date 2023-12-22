@@ -1,14 +1,47 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0dk6b3tjjbdp"]
 
 [ext_resource type="PackedScene" uid="uid://c7ybiv8wiotbs" path="res://Scenes/world.tscn" id="1_kuv70"]
-[ext_resource type="Script" path="res://Scenes/Game.gd" id="1_mnivy"]
-[ext_resource type="PackedScene" uid="uid://cshq4rm8sleoe" path="res://Scenes/Porsche 911 GT2.tscn" id="2_gwvqc"]
+[ext_resource type="PackedScene" uid="uid://dsnusnyamqnve" path="res://Scenes/porshe_911_gt_2.tscn" id="4_k4auy"]
+[ext_resource type="PackedScene" uid="uid://c747eapabhv31" path="res://Toyota model.tscn" id="4_mm6hp"]
 
 [node name="Game" type="Node3D"]
-script = ExtResource("1_mnivy")
-
-[node name="Porsche911Gt2" parent="." instance=ExtResource("2_gwvqc")]
-transform = Transform3D(0.998483, 0, -0.0550723, 0, 1, 0, 0.0550723, 0, 0.998483, 89.0499, 1.25477, 0.00974655)
 
 [node name="World" parent="." instance=ExtResource("1_kuv70")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428192, 0)
+
+[node name="Ai Car" type="Node3D" parent="."]
+
+[node name="Toyota" parent="Ai Car" node_paths=PackedStringArray("patrol_points") instance=ExtResource("4_mm6hp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5202, 2.36938, -20.9732)
+patrol_points = [NodePath("../Patrol_points/point_0"), NodePath("../Patrol_points/point_1"), NodePath("../Patrol_points/point_2"), NodePath("../Patrol_points/point_3"), NodePath("../Patrol_points/point_4"), NodePath("../Patrol_points/point_5"), NodePath("../Patrol_points/point_6"), NodePath("../Patrol_points/point_7")]
+
+[node name="Patrol_points" type="Node3D" parent="Ai Car"]
+
+[node name="point_0" type="Marker3D" parent="Ai Car/Patrol_points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.0822, 0, -22)
+
+[node name="point_1" type="Marker3D" parent="Ai Car/Patrol_points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 0, 17.7549)
+
+[node name="point_2" type="Marker3D" parent="Ai Car/Patrol_points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5558, 0, 41)
+
+[node name="point_3" type="Marker3D" parent="Ai Car/Patrol_points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8198, 0, 41.2784)
+
+[node name="point_4" type="Marker3D" parent="Ai Car/Patrol_points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2485, 0, 11.2528)
+
+[node name="point_5" type="Marker3D" parent="Ai Car/Patrol_points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0747, 0, -26.5762)
+
+[node name="point_6" type="Marker3D" parent="Ai Car/Patrol_points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305437, 0, -51.128)
+
+[node name="point_7" type="Marker3D" parent="Ai Car/Patrol_points"]
+transform = Transform3D(1, 0, 0, 0, -0.283078, -0.959097, 0, 0.959097, -0.283078, 39.787, 0, -50.3018)
+
+[node name="Player" type="Node3D" parent="."]
+
+[node name="Porshe 911 Gt2" parent="Player" instance=ExtResource("4_k4auy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8793, 2.74802, 16.6927)

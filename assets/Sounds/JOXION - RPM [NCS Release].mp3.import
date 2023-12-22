@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6ajdioh8tx82"
+path="res://.godot/imported/JOXION - RPM [NCS Release].mp3-425fd80da7ed76973dbde9ff92dbbd44.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/JOXION - RPM [NCS Release].mp3"
+dest_files=["res://.godot/imported/JOXION - RPM [NCS Release].mp3-425fd80da7ed76973dbde9ff92dbbd44.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

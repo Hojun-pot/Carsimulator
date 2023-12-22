@@ -11,7 +11,7 @@ var jump_triggered = false
 var respawn_position = Vector3.ZERO  # 리스폰 위치
 #Drifting
 var drifting = false
-var normal_friction_slip = 20
+var normal_friction_slip = 15
 var drift_friction_slip = 5.5
 #Sound 
 @onready var sound_effects = $SoundEffects

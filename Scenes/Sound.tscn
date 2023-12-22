@@ -1,17 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://befisib4uhaei"]
+[gd_scene load_steps=9 format=3 uid="uid://befisib4uhaei"]
 
+[ext_resource type="AudioStream" uid="uid://bs7njfkkakmfs" path="res://assets/Sounds/Carhorn.mp3" id="1_dabwd"]
 [ext_resource type="AudioStream" uid="uid://cjygjpyihlo00" path="res://assets/Sounds/Drift.ogg" id="1_tabxn"]
 [ext_resource type="AudioStream" uid="uid://05yc3p8rnyld" path="res://assets/Sounds/car-engine-starting-43705.mp3" id="2_hougd"]
 [ext_resource type="AudioStream" uid="uid://dx7mqjavyupyc" path="res://assets/Sounds/nitro-activation-48077.mp3" id="3_3ddxy"]
 [ext_resource type="AudioStream" uid="uid://ctdxbdx2vgtwp" path="res://assets/Sounds/DrivingNoise.mp3" id="4_mhqoo"]
-[ext_resource type="AudioStream" uid="uid://cqtapyxtwbglb" path="res://assets/Sounds/Songs/Ado 唱.mp3" id="5_escyc"]
 [ext_resource type="AudioStream" uid="uid://ca14jdvvu3des" path="res://assets/Sounds/Crash.mp3" id="6_28i73"]
+[ext_resource type="AudioStream" uid="uid://d1spqc3hja3nk" path="res://assets/Sounds/Songs/JOXION - RPM [NCS Release].mp3" id="6_cwci2"]
+[ext_resource type="AudioStream" uid="uid://5fyvvyrfoyyy" path="res://assets/Sounds/Songs/speedboys - techno on my mind [NCS Release].mp3" id="8_1orue"]
 
-[node name="Sound" type="Node3D"]
+[node name="SoundEffects" type="Node3D"]
 
-[node name="DriftSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_tabxn")
-pitch_scale = 1.49
+[node name="RPM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cwci2")
 
 [node name="StartSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_hougd")
@@ -23,10 +24,24 @@ stream = ExtResource("3_3ddxy")
 [node name="DrivingSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_mhqoo")
 
-[node name="Song" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_escyc")
-pitch_scale = 1.49
-
 [node name="CrashSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_28i73")
-volume_db = 6.893
+volume_db = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Song" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_1orue")
+volume_db = 5.0
+unit_size = 4.0
+max_db = 6.0
+max_distance = 10.0
+panning_strength = 5.0
+
+[node name="Horn" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_dabwd")
+
+[node name="DriftSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_tabxn")
+volume_db = 2.0
+unit_size = 2.0
