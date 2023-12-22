@@ -61,7 +61,7 @@ var dodge_interval = 0.25  # Executes dodge if pressed twice within 0.25 seconds
 @onready var camera = $Camera
 @export var sens_horizontal = 0.5
 @export var sens_vertical = 0.5
-
+var initial_camer_rotation: Vector3
 # Collision
 var previous_velocity = Vector3.ZERO
 
@@ -72,6 +72,7 @@ func activate_control():
 func _ready():
 	respawn_position = global_transform.origin
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	initial_camer_rotation = camera.rotation_degrees
 	turbo_timer = turbo_duration
 	# Play the start sound.
 	sound_effects.get_node("StartSound").play()
@@ -84,15 +85,13 @@ func _ready():
 	tail_neon_left.emitting = false
 	tail_neon_right.emitting = false
 	
-	# Connect the collision shape body entered signal.
-	
 func _physics_process(delta: float) -> void:
 	var on_floor = is_vehicle_on_floor()
 	var current_time = Time.get_ticks_msec() / 1000.0
 	previous_velocity = linear_velocity
 	
 	# Handle camera movement with the joystick.
-	rotate_y(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X) * -sens_horizontal * 0.1)
+	camera.rotate_y(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X) * -sens_horizontal * 0.1)
 	camera.rotate_x(Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y) * -sens_vertical * 0.05)
 	
 	# Update the vehicle's speed.
@@ -155,6 +154,9 @@ func process_input(_delta, _speed, _on_floor):
 	# Apply brakes.
 	braking = Input.is_action_pressed("Brake")
 		
+	#camera reset
+	if Input.is_action_just_pressed("reset_camera"):
+		camera.rotation_degrees = initial_camer_rotation
 # Function for processing physics effects.
 func process_physics(delta, speed, on_floor):
 	# Jump logic.
@@ -336,9 +338,5 @@ func _input(event):
 		camera.rotate_x(deg_to_rad(event.relative.y * sens_vertical))
 		
 func _on_body_entered(_body):
-	# 충돌 전 차량의 속도를 저장합니다. (이전 _physics_process 함수에서 해야 함)
-	var impact_velocity = previous_velocity - linear_velocity
-	impact_velocity.y = 0 # y축은 무시합니다 (충돌이 수평 방향에 대해서만 감지되길 원할 때).
-	# x 또는 z축 방향에 상당한 충돌이 감지된 경우 소리를 재생합니다.
-	if impact_velocity.length() > 0.1 and (abs(impact_velocity.x) > 0.1 or abs(impact_velocity.z) > 0.1):
+	if abs(self.linear_velocity.x > 0.1 or abs(self.linear_velocity.z) > 0.1):
 		sound_effects.get_node("Horn").play()

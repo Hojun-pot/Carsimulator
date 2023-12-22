@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c7ybiv8wiotbs" path="res://Scenes/world.tscn" id="1_kuv70"]
 [ext_resource type="PackedScene" uid="uid://dsnusnyamqnve" path="res://Scenes/porshe_911_gt_2.tscn" id="4_k4auy"]
-[ext_resource type="PackedScene" uid="uid://c747eapabhv31" path="res://Toyota model.tscn" id="4_mm6hp"]
+[ext_resource type="PackedScene" uid="uid://c747eapabhv31" path="res://assets/Toyota model.tscn" id="4_mm6hp"]
 
 [node name="Game" type="Node3D"]
 
@@ -45,3 +45,5 @@ transform = Transform3D(1, 0, 0, 0, -0.283078, -0.959097, 0, 0.959097, -0.283078
 
 [node name="Porshe 911 Gt2" parent="Player" instance=ExtResource("4_k4auy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8793, 2.74802, 16.6927)
+
+[connection signal="body_entered" from="Ai Car/Toyota" to="Ai Car/Toyota" method="_on_body_entered"]
