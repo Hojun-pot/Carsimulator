@@ -9,9 +9,9 @@ var current_patrol_point_index = 0
 @onready var detection_area = $DetectionArea
 # Defines the normal engine force.
 @export var normal_engine_force = 60
-@export var drift_engine_force = 30
+@export var drift_engine_force = 20
 @export var patrol_points : Array[Marker3D]
-# Drifting
+# Drdrifting
 var drifting = false
 var normal_friction_slip = 15
 var drift_friction_slip = 5.5
@@ -24,18 +24,12 @@ var drift_friction_slip = 5.5
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Player = get_node("/root/Game/Player/").get_child(0)
-	connect("body_entered", Callable(self, "_on_body_entered"))
 	navigation.avoidance_enabled = true
 	sound_effects.get_node("Song").play()
-	head_light_left.visible = false
-	head_light_right.visible = false
-	tail_light_left.visible = false
-	tail_light_right.visible = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
-	
-	
+	var previous_velocity = Vector3.ZERO
 	# We add this line because the navigation region takes time to prepare itself.
 	if is_first_call:
 		is_first_call = false
@@ -70,7 +64,8 @@ func avoid_player():
 	look_at(my_pos + escape_velocity, Vector3.UP)
 	
 	# Action
-	head_light.rotation_degrees.x += 82.5
+	if head_light.rotation_degrees.x < 1 :
+		head_light.rotation_degrees.x += 82.5
 	head_light_left.visible = true
 	head_light_right.visible = true
 	tail_light_left.visible = true
@@ -122,11 +117,6 @@ func set_driving_behavior(_index):
 		end_drift()
 					
 func return_to_path():
-	head_light.rotation_degrees.x -= 82.5
-	head_light_left.visible = false
-	head_light_right.visible = false
-	tail_light_left.visible = false
-	tail_light_right.visible = false
 	set_patrol_target()
 	
 func start_drift():
@@ -149,4 +139,5 @@ func end_drift():
 				wheel_node.wheel_friction_slip = normal_friction_slip
 
 func _on_body_entered(_body):
-	sound_effects.get_node("CrashSound").play()
+	if abs(self.linear_velocity.x > 0.1 or abs(self.linear_velocity.z) > 0.1):
+		sound_effects.get_node("Horn").play()
