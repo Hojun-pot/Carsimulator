@@ -5,7 +5,7 @@
 <br />
 <div align="center">
   <a href="https://https://github.com/Hojun-pot/Carsimulator_With_Godot">
-    <img src="images/Project_logo_ai.png" alt="Logo" width="80" height="80">
+    <img src="images/Project_logo_ai.png">
   </a>
 
   <h3 align="center">Best-README-Template</h3>
